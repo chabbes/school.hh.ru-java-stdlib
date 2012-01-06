@@ -19,13 +19,13 @@ public class Substitutor3000 {
 
     public synchronized String get(String key) {
         if (!hashMap.containsKey(key))
-            return null;
+            return "";
 
         Matcher matcher = pattern.matcher(hashMap.get(key));
         while (matcher.find()) {
             String tok = "";
             if (hashMap.containsKey(matcher.group(1))) {
-                tok = hashMap.get(matcher.group(1)) + " ";
+                tok = hashMap.get(matcher.group(1));
             }
             matcher = pattern.matcher(matcher.replaceFirst(tok));
         }
